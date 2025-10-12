@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>杜荣葵 - 专业母婴护理人员</title>
+    <title>高宇翔 - 光电专业游戏达人</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,26 +17,25 @@
             font-family: 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #fff5f5;
-            padding: 0;
-            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
         
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
             overflow: hidden;
             margin-top: 20px;
-            margin-bottom: 20px;
         }
         
         .header {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
             color: white;
-            padding: 30px;
+            padding: 40px 30px;
             text-align: center;
             position: relative;
         }
@@ -48,10 +47,11 @@
             border: 5px solid rgba(255, 255, 255, 0.5);
             object-fit: cover;
             margin: 0 auto 20px;
-            background-color: #f8c6c7;
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .profile-img i {
@@ -60,35 +60,39 @@
         }
         
         .name {
-            font-size: 32px;
+            font-size: 36px;
             margin-bottom: 5px;
-            font-weight: 700;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .tagline {
-            font-size: 18px;
+            font-size: 20px;
             opacity: 0.9;
             margin-bottom: 15px;
+            font-weight: 300;
         }
         
         .status-badge {
             display: inline-block;
             background: #4CAF50;
             color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-top: 10px;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 15px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         .content {
-            padding: 30px;
+            padding: 40px;
         }
         
         .section {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
         }
         
         .section:last-child {
@@ -96,130 +100,175 @@
         }
         
         .section-title {
-            font-size: 22px;
+            font-size: 28px;
             color: #ff6b6b;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #ffd3d3;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ffd3d3;
             display: flex;
             align-items: center;
+            font-weight: 700;
         }
         
         .section-title i {
-            margin-right: 10px;
+            margin-right: 15px;
+            font-size: 32px;
         }
         
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
         
         .info-item {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #ff9a9e;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
         }
         
         .info-label {
-            font-weight: 600;
+            font-weight: 700;
             color: #777;
-            margin-bottom: 5px;
-            font-size: 14px;
+            margin-bottom: 8px;
+            font-size: 16px;
         }
         
         .info-value {
-            font-size: 16px;
+            font-size: 18px;
             color: #333;
+            font-weight: 600;
         }
         
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .skill {
-            background: #ffecec;
-            color: #ff6b6b;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
         
-        .photo-item {
-            height: 150px;
-            background: #f0f0f0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            flex-direction: column;
+        .skill {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
         }
         
-        .photo-item i {
-            font-size: 30px;
-            margin-bottom: 10px;
+        .game-stats {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .stat-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .stat-value {
+            font-weight: 700;
+            font-size: 20px;
+        }
+        
+        .quote {
+            background: #fff5f5;
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .quote i {
+            color: #ff6b6b;
+            margin-right: 10px;
         }
         
         .contact-info {
-            background: #f8f8f8;
-            padding: 20px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
+            box-shadow: 0 5px 25px rgba(102, 126, 234, 0.4);
         }
         
         .contact-btn {
             display: inline-block;
-            background: #ff6b6b;
-            color: white;
-            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
+            font-weight: 700;
+            margin-top: 20px;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .contact-btn:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .location {
+        .signature {
+            text-align: right;
+            font-style: italic;
+            color: #888;
             margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .specialty {
+            background: #ffeaa7;
             padding: 15px;
-            background: #f0f9ff;
-            border-radius: 8px;
-            border-left: 4px solid #4dabf7;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #fdcb6e;
         }
         
-        .location i {
-            color: #4dabf7;
-            margin-right: 10px;
-        }
-        
-        .verification {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            color: #4CAF50;
-        }
-        
-        .verification i {
-            margin-right: 8px;
+        .specialty-title {
+            font-weight: 700;
+            color: #d35400;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
         
         @media (max-width: 768px) {
@@ -227,220 +276,200 @@
                 grid-template-columns: 1fr;
             }
             
-            .photo-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-            
             .header {
-                padding: 20px;
+                padding: 30px 20px;
             }
             
             .name {
-                font-size: 26px;
+                font-size: 28px;
+            }
+            
+            .content {
+                padding: 25px;
             }
         }
         
-        .security-badge {
-            display: inline-flex;
-            align-items: center;
-            background: #e7f4e4;
-            color: #2e7d32;
-            padding: 8px 15px;
-            border-radius: 20px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            font-size: 14px;
+        .fun-fact {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #74b9ff;
         }
         
-        .security-badge i {
-            margin-right: 5px;
+        .fun-title {
+            color: #0984e3;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 18px;
         }
     </style>
     <!-- 微信分享Meta标签 -->
-    <meta property="og:title" content="杜荣葵 - 专业母婴护理人员">
-    <meta property="og:description" content="8年经验催乳师、月嫂、育儿嫂，身份证已核实，专业技能认证">
-    <meta property="og:image" content="https://example.com/profile.jpg">
+    <meta property="og:title" content="高宇翔 - 光电专业游戏达人">
+    <meta property="og:description" content="南京邮电大学通达学院光电专业｜和平精英地铁逃生大神｜专业开黄腔选手">
+    <meta property="og:image" content="https://example.com/gaoyuxiang.jpg">
     <meta property="og:url" content="https://example.com">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="profile-img">
-                <i class="fas fa-user"></i>
+                <i class="fas fa-gamepad"></i>
             </div>
-            <h1 class="name">杜荣葵</h1>
-            <div class="tagline">专业母婴护理 · 8年经验</div>
-            <div class="status-badge">待岗</div>
+            <h1 class="name">高宇翔</h1>
+            <div class="tagline">光电专业 · 游戏达人 · 专业骚话选手</div>
+            <div class="status-badge">在线求组队</div>
         </div>
         
         <div class="content">
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> 基本信息</h2>
+                <h2 class="section-title"><i class="fas fa-user"></i> 基本信息</h2>
                 <div class="info-grid">
                     <div class="info-item">
-                        <div class="info-label">年龄</div>
-                        <div class="info-value">51岁</div>
+                        <div class="info-label">专业</div>
+                        <div class="info-value">光电信息科学与工程</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">性别</div>
-                        <div class="info-value">女</div>
+                        <div class="info-label">学校</div>
+                        <div class="info-value">南京邮电大学通达学院</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">籍贯</div>
-                        <div class="info-value">安徽六安</div>
+                        <div class="info-label">游戏ID</div>
+                        <div class="info-value">地铁小王子⚡</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">婚姻状况</div>
-                        <div class="info-value">已婚</div>
+                        <div class="info-label">擅长游戏</div>
+                        <div class="info-value">和平精英 · 地铁逃生</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">属相</div>
-                        <div class="info-value">牛</div>
+                        <div class="info-label">游戏等级</div>
+                        <div class="info-value">王牌段位 · 巅峰赛前100</div>
                     </div>
                     <div class="info-item">
-                        <div class="info-label">星座</div>
-                        <div class="info-value">金牛座</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">民族</div>
-                        <div class="info-value">汉族</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">学历</div>
-                        <div class="info-value">初中</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">语言</div>
-                        <div class="info-value">普通话标准</div>
+                        <div class="info-label">在线时间</div>
+                        <div class="info-value">随时上线，24小时待命</div>
                     </div>
                 </div>
                 
-                <div class="verification">
-                    <i class="fas fa-id-card"></i>
-                    <span>身份证已核实</span>
+                <div class="quote">
+                    <i class="fas fa-quote-left"></i>
+                    "光电是我的专业，游戏是我的事业，开黄腔是我的特长"
                 </div>
             </div>
             
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-concierge-bell"></i> 服务项目</h2>
+                <h2 class="section-title"><i class="fas fa-gamepad"></i> 游戏数据</h2>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">地铁逃生场次</span>
+                        <span class="stat-value">1,258场</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">KD比率</span>
+                        <span class="stat-value">4.8</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最高击杀</span>
+                        <span class="stat-value">28杀</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">吃鸡率</span>
+                        <span class="stat-value">35.7%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最爱武器</span>
+                        <span class="stat-value">M416 + 8倍镜</span>
+                    </div>
+                </div>
+                
+                <div class="specialty">
+                    <div class="specialty-title">地铁逃生专精技能</div>
+                    <div class="skills">
+                        <span class="skill">快速搜刮</span>
+                        <span class="skill">精准爆头</span>
+                        <span class="skill">风骚走位</span>
+                        <span class="skill">极限逃生</span>
+                        <span class="skill">物资管理</span>
+                        <span class="skill">团队指挥</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 学术背景</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">专业方向</div>
+                        <div class="info-value">光电信息科学与工程</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">研究领域</div>
+                        <div class="info-value">激光技术 · 光纤通信 · 光电检测</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">实验室技能</div>
+                        <div class="info-value">光学设计 · 光电转换 · 信号处理</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">学术成就</div>
+                        <div class="info-value">专业课不挂科 · 实验课能过关</div>
+                    </div>
+                </div>
+                
+                <div class="fun-fact">
+                    <div class="fun-title">学术与游戏的完美结合</div>
+                    <p>"用光学原理分析游戏画面，用信号处理理解游戏机制，这就是我的学习之道"</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title"><i class="fas fa-fire"></i> 个人特色</h2>
                 <div class="skills">
-                    <span class="skill">催乳师</span>
-                    <span class="skill">月嫂</span>
-                    <span class="skill">育儿嫂</span>
-                    <span class="skill">家政员</span>
-                    <span class="skill">育婴师</span>
-                    <span class="skill">中餐</span>
-                    <span class="skill">面食</span>
-                    <span class="skill">月子餐</span>
-                    <span class="skill">营养配餐</span>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-star"></i> 专业技能</h2>
-                <div class="skills">
-                    <span class="skill">开奶</span>
-                    <span class="skill">催乳</span>
-                    <span class="skill">产后修复</span>
-                    <span class="skill">产后熏蒸</span>
-                    <span class="skill">婴儿游泳</span>
-                    <span class="skill">婴幼儿护理</span>
-                    <span class="skill">小儿推拿</span>
-                    <span class="skill">心理辅导</span>
-                    <span class="skill">恶露观察</span>
-                    <span class="skill">洗澡抚触</span>
-                    <span class="skill">满月汗蒸</span>
-                    <span class="skill">肚脐护理</span>
-                    <span class="skill">通乳</span>
-                    <span class="skill">黄疸分辨</span>
-                    <span class="skill">辅食添加</span>
-                    <span class="skill">早教开发</span>
-                </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-home"></i> 住家情况</h2>
-                <div class="info-value">住家</div>
-                
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>合肥市庐阳区益民街妇幼保健院北门对面臻爱妈妈家政</span>
+                    <span class="skill">幽默风趣</span>
+                    <span class="skill">骚话连篇</span>
+                    <span class="skill">游戏大神</span>
+                    <span class="skill">团队开心果</span>
+                    <span class="skill">技术宅</span>
+                    <span class="skill">社交牛逼症</span>
+                    <span class="skill">段子手</span>
+                    <span class="skill">活宝</span>
                 </div>
                 
-                <div class="info-item" style="margin-top: 15px;">
-                    <div class="info-label">现住区域</div>
-                    <div class="info-value">安徽合肥蜀山</div>
+                <div class="quote">
+                    <i class="fas fa-quote-left"></i>
+                    "游戏打得好，黄腔开得妙，这就是我高宇翔的人生信条"
                 </div>
             </div>
             
             <div class="section">
-                <h2 class="section-title"><i class="fas fa-shield-alt"></i> 安全保障</h2>
-                <div>
-                    <span class="security-badge"><i class="fas fa-id-card"></i> 身份验证</span>
-                    <span class="security-badge"><i class="fas fa-certificate"></i> 资格认证</span>
-                    <span class="security-badge"><i class="fas fa-heart"></i> 健康证明</span>
-                    <span class="security-badge"><i class="fas fa-lock"></i> 背景调查</span>
+                <h2 class="section-title"><i class="fas fa-users"></i> 组队要求</h2>
+                <div class="info-item">
+                    <div class="info-label">队友条件</div>
+                    <div class="info-value">能接受骚话 · 不怕黄腔 · 游戏态度好</div>
                 </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-camera"></i> 工作与生活照</h2>
-                <p style="margin-bottom: 15px; color: #777;">27张工作生活照展示</p>
-                <div class="photo-gallery">
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 1</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 2</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 3</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 4</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 5</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-image"></i>
-                        <span>照片 6</span>
-                    </div>
+                
+                <div class="info-item">
+                    <div class="info-label">拒绝类型</div>
+                    <div class="info-value">玻璃心 · 开挂玩家 · 压力怪</div>
                 </div>
-            </div>
-            
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-award"></i> 资格证书</h2>
-                <p style="margin-bottom: 15px; color: #777;">11张专业资格认证</p>
-                <div class="photo-gallery">
-                    <div class="photo-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>资格证 1</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>资格证 2</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>资格证 3</span>
-                    </div>
-                    <div class="photo-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>资格证 4</span>
-                    </div>
+                
+                <div class="info-item">
+                    <div class="info-label">团队风格</div>
+                    <div class="info-value">欢乐游戏 · 互相调侃 · 共同进步</div>
                 </div>
             </div>
             
             <div class="contact-info">
-                <h3>立即联系杜荣葵老师</h3>
-                <p>8年专业母婴护理经验，为您提供贴心的服务</p>
-                <a href="tel:+1234567890" class="contact-btn">立即咨询</a>
+                <h3>想要组队？快来联系我！</h3>
+                <p>无论是游戏还是学术交流，我都欢迎！</p>
+                <p>加我好友，一起畅游地铁逃生的世界 🎮</p>
+                <a href="javascript:void(0)" class="contact-btn" onclick="alert('游戏ID：地铁小王子⚡ \\n请备注：组队开车')">
+                    获取游戏ID
+                </a>
+                
+                <div class="signature">
+                    -- 高宇翔 · 专业骚话选手 --
+                </div>
             </div>
         </div>
     </div>
@@ -451,19 +480,16 @@
         // 微信分享配置
         async function initWeChatShare() {
             try {
-                // 获取当前页面URL（去除hash部分）
                 const currentUrl = window.location.href.split('#')[0];
                 
-                // 这里应该是调用API获取签名的代码
-                // 为了简化示例，我们使用模拟数据
+                // 模拟签名数据（实际使用时需要调用后端API）
                 const signData = {
-                    appId: '您的微信公众号AppID',
-                    nonceStr: '随机字符串',
-                    timestamp: '时间戳',
-                    signature: '签名'
+                    appId: 'wx-your-app-id',
+                    nonceStr: Math.random().toString(36).substr(2, 15),
+                    timestamp: parseInt(Date.now() / 1000) + '',
+                    signature: '模拟签名数据'
                 };
                 
-                // 配置微信JS-SDK
                 wx.config({
                     debug: false,
                     appId: signData.appId,
@@ -472,40 +498,45 @@
                     signature: signData.signature,
                     jsApiList: [
                         'updateAppMessageShareData',
-                        'updateTimelineShareData',
-                        'onMenuShareAppMessage',
-                        'onMenuShareTimeline'
+                        'updateTimelineShareData'
                     ]
                 });
                 
                 wx.ready(() => {
-                    // 自定义"分享给朋友"及"分享到QQ"按钮的分享内容
                     wx.updateAppMessageShareData({
-                        title: '杜荣葵 - 专业母婴护理人员',
-                        desc: '8年经验催乳师、月嫂、育儿嫂，身份证已核实，专业技能认证',
+                        title: '高宇翔 - 光电专业游戏达人',
+                        desc: '南京邮电大学通达学院｜和平精英地铁逃生大神｜专业骚话选手',
                         link: currentUrl,
-                        imgUrl: 'https://example.com/profile.jpg',
+                        imgUrl: 'https://example.com/gaoyuxiang.jpg',
                     });
                     
-                    // 自定义"分享到朋友圈"及"分享到QQ空间"按钮的分享内容
                     wx.updateTimelineShareData({
-                        title: '杜荣葵 - 专业母婴护理人员',
+                        title: '高宇翔 - 专业游戏玩家兼光电学霸',
                         link: currentUrl,
-                        imgUrl: 'https://example.com/profile.jpg',
+                        imgUrl: 'https://example.com/gaoyuxiang.jpg',
                     });
-                });
-                
-                wx.error((res) => {
-                    console.error('WeChat JS-SDK Error:', res);
                 });
                 
             } catch (error) {
-                console.error('Failed to initialize WeChat share:', error);
+                console.error('微信分享初始化失败:', error);
             }
         }
 
-        // 页面加载完成后初始化微信分享
-        document.addEventListener('DOMContentLoaded', initWeChatShare);
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initWeChatShare();
+            
+            // 添加一些交互效果
+            const skills = document.querySelectorAll('.skill');
+            skills.forEach(skill => {
+                skill.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                });
+            });
+        });
     </script>
 </body>
 </html>
