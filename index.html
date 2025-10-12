@@ -181,7 +181,7 @@
                 const currentUrl = window.location.href.split('#')[0];
                 
                 // 调用阿里云函数计算API获取签名
-                const response = await fetch('https://your-function-url/wechat-signature?url=' + encodeURIComponent(currentUrl));
+                const response = await fetch('https://myresume-bjsnqymfhk.cn-hangzhou.fcapp.run?url=' + encodeURIComponent(currentUrl));
                 const signData = await response.json();
                 
                 if (signData.error) {
