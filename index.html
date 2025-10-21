@@ -3,607 +3,850 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>高宇翔 - 个人简介</title>
-    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <title>高宇翔 - 个人简介卡片编辑器</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #ff6b6b;
-            --secondary: #4ecdc4;
-            --dark: #292f36;
-            --light: #f7fff7;
-            --accent: #ffd166;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Microsoft YaHei', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--light);
+            color: #333;
             min-height: 100vh;
             padding: 20px;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50% }
-            50% { background-position: 100% 50% }
-            100% { background-position: 0% 50% }
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            padding: 30px 0;
-            position: relative;
-        }
-        
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--accent);
-            object-fit: cover;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background-image: url('https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            color: var(--accent);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-        
-        .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
         }
         
         .card {
-            background: rgba(41, 47, 54, 0.85);
+            background: white;
             border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
         
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transform: translateY(-5px);
         }
         
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .card-header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            object-fit: cover;
+            margin: 0 auto 20px;
+            background-color: #f8c6c7;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .tagline {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffd3d3;
+            display: flex;
             align-items: center;
         }
         
-        .edit-icon {
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--secondary);
-            transition: color 0.3s;
+        .section-title i {
+            margin-right: 10px;
         }
         
-        .edit-icon:hover {
-            color: var(--accent);
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
         }
         
-        .game-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
+        .info-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff9a9e;
         }
         
-        .stat {
-            text-align: center;
-            flex: 1;
+        .info-label {
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 5px;
+            font-size: 14px;
         }
         
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent);
+        .info-value {
+            font-size: 16px;
+            color: #333;
         }
         
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .tag-cloud {
+        .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
-        .tag {
-            background: var(--secondary);
-            color: var(--dark);
-            padding: 5px 15px;
+        .skill {
+            background: #ffecec;
+            color: #ff6b6b;
+            padding: 8px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            font-size: 14px;
         }
         
-        .social-links {
+        .editor-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .editor-title {
+            font-size: 28px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .editor-section {
+            margin-bottom: 25px;
+        }
+        
+        .editor-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        
+        .editor-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .editor-input:focus {
+            border-color: #ff6b6b;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+        
+        .editor-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+            transition: all 0.3s;
+        }
+        
+        .editor-textarea:focus {
+            border-color: #ff6b6b;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+        }
+        
+        .skill-editor {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill-input {
+            flex: 1;
+            min-width: 150px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
             margin-top: 30px;
         }
         
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--dark);
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff7b80 0%, #f8b4a4 100%);
+            transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .social-icon:hover {
-            transform: scale(1.1);
-            background: var(--primary);
-        }
-        
-        .quote {
-            font-style: italic;
-            margin-top: 20px;
-            opacity: 0.8;
-            text-align: center;
-            font-size: 1.1rem;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--dark);
-            border-radius: 15px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .close-modal {
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--secondary);
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(0,0,0,0.3);
-            color: var(--light);
-            font-size: 1rem;
-        }
-        
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background 0.3s;
-            display: inline-block;
-        }
-        
-        .btn:hover {
-            background: #ff5252;
-        }
-        
         .btn-secondary {
-            background: var(--secondary);
+            background: #4dabf7;
+            color: white;
         }
         
         .btn-secondary:hover {
-            background: #3db9b1;
+            background: #339af0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
-        .btn-container {
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .color-picker {
             display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .color-option.active {
+            border-color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        
+        .theme-1 { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); }
+        .theme-2 { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); }
+        .theme-3 { background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%); }
+        .theme-4 { background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); }
+        .theme-5 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        
+        .preview-controls {
+            display: flex;
+            justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
         
-        @media (max-width: 768px) {
-            .card-container {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
+        .preview-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
         }
         
-        .signature {
-            text-align: center;
-            margin-top: 40px;
-            opacity: 0.7;
-            font-size: 0.9rem;
+        .preview-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .share-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .share-btn i {
+            margin-right: 8px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .notification.show {
+            opacity: 1;
         }
     </style>
+    <!-- 微信分享Meta标签 -->
+    <meta property="og:title" content="高宇翔 - 专业光电工程师 & 游戏达人">
+    <meta property="og:description" content="南京邮电大学通达学院光电专业 | 和平精英地铁逃生高手">
+    <meta property="og:image" content="https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg">
+    <meta property="og:url" content="https://example.com">
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="profile-pic"></div>
-            <h1 id="name">高宇翔</h1>
-            <div class="subtitle" id="school">南京邮电大学通达学院 · 光电专业</div>
-            <div class="subtitle" id="title">和平精英 · 地铁逃生专家</div>
-        </header>
-        
-        <div class="card-container">
-            <div class="card">
-                <div class="card-title">
-                    个人简介
-                    <span class="edit-icon" onclick="openModal('bio')">✏️</span>
+        <!-- 预览卡片 -->
+        <div class="card" id="previewCard">
+            <div class="card-header" id="cardHeader">
+                <div class="profile-img">
+                    <img src="https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg" alt="高宇翔">
                 </div>
-                <p id="bio-content">江湖人称"地铁小王子"，精通和平精英地铁逃生模式，KD常年保持在6.66。南邮通达光电专业在读，白天研究光电子技术，晚上化身吃鸡战神。性格开朗幽默，擅长活跃气氛，是团队中的开心果和战术指挥官。</p>
+                <h1 class="name" id="previewName">高宇翔</h1>
+                <div class="tagline" id="previewTagline">专业光电工程师 · 游戏达人</div>
+                <div class="status-badge" id="previewStatus">待岗</div>
             </div>
             
-            <div class="card">
-                <div class="card-title">
-                    游戏数据
-                    <span class="edit-icon" onclick="openModal('stats')">✏️</span>
-                </div>
-                <div class="game-stats">
-                    <div class="stat">
-                        <div class="stat-value" id="kd-value">6.66</div>
-                        <div class="stat-label">KD值</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" id="level">王牌</div>
-                        <div class="stat-label">段位</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" id="matches">1280</div>
-                        <div class="stat-label">场次</div>
-                    </div>
-                </div>
-                <div class="game-stats">
-                    <div class="stat">
-                        <div class="stat-value" id="win-rate">78%</div>
-                        <div class="stat-label">胜率</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" id="headshot">42%</div>
-                        <div class="stat-label">爆头率</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value" id="damage">876</div>
-                        <div class="stat-label">场均伤害</div>
+            <div class="card-content">
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-info-circle"></i> 基本信息</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">专业</div>
+                            <div class="info-value" id="previewMajor">光电信息科学与工程</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">学校</div>
+                            <div class="info-value" id="previewSchool">南京邮电大学通达学院</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">游戏ID</div>
+                            <div class="info-value" id="previewGameId">地铁逃生·光子</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">游戏等级</div>
+                            <div class="info-value" id="previewGameLevel">王牌段位</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    个人标签
-                    <span class="edit-icon" onclick="openModal('tags')">✏️</span>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-gamepad"></i> 游戏数据</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">场均淘汰</div>
+                            <div class="info-value" id="previewKills">8.5</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">胜率</div>
+                            <div class="info-value" id="previewWinRate">72%</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">KD值</div>
+                            <div class="info-value" id="previewKD">4.2</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">游戏时长</div>
+                            <div class="info-value" id="previewPlayTime">1500+小时</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="tag-cloud" id="tag-cloud">
-                    <span class="tag">地铁逃生专家</span>
-                    <span class="tag">团队开心果</span>
-                    <span class="tag">光电技术宅</span>
-                    <span class="tag">幽默大师</span>
-                    <span class="tag">战术指挥官</span>
-                    <span class="tag">气氛组组长</span>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-star"></i> 个人标签</h2>
+                    <div class="skills" id="previewTags">
+                        <span class="skill">幽默风趣</span>
+                        <span class="skill">游戏达人</span>
+                        <span class="skill">技术宅</span>
+                        <span class="skill">团队核心</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-title">
-                    经典语录
-                    <span class="edit-icon" onclick="openModal('quote')">✏️</span>
+                
+                <div class="section">
+                    <h2 class="section-title"><i class="fas fa-quote-right"></i> 经典语录</h2>
+                    <div class="info-item">
+                        <div class="info-value" id="previewQuote">"光电是我的专业，游戏是我的热爱，生活要有光也要有乐趣！"</div>
+                    </div>
                 </div>
-                <p class="quote" id="quote">"玩游戏嘛，最重要的是开心！技术可以练，但幽默感是天生的～"</p>
             </div>
         </div>
         
-        <div class="social-links">
-            <a href="#" class="social-icon">微</a>
-            <a href="#" class="social-icon">Q</a>
-            <a href="#" class="social-icon">抖</a>
-            <a href="#" class="social-icon">和</a>
-        </div>
-        
-        <div class="signature">
-            最后更新于 <span id="update-date">2023年10月21日</span>
+        <!-- 编辑面板 -->
+        <div class="editor-panel">
+            <h1 class="editor-title">微信分享卡片编辑器</h1>
+            
+            <div class="editor-section">
+                <label class="editor-label">姓名</label>
+                <input type="text" class="editor-input" id="editName" value="高宇翔">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">头衔</label>
+                <input type="text" class="editor-input" id="editTagline" value="专业光电工程师 · 游戏达人">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">状态</label>
+                <input type="text" class="editor-input" id="editStatus" value="待岗">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">专业信息</label>
+                <input type="text" class="editor-input" id="editMajor" value="光电信息科学与工程">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">学校信息</label>
+                <input type="text" class="editor-input" id="editSchool" value="南京邮电大学通达学院">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">游戏ID</label>
+                <input type="text" class="editor-input" id="editGameId" value="地铁逃生·光子">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">游戏数据</label>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">场均淘汰</div>
+                        <input type="text" class="editor-input" id="editKills" value="8.5">
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">胜率</div>
+                        <input type="text" class="editor-input" id="editWinRate" value="72%">
+                    </div>
+                    <div class="info-label">KD值</div>
+                    <input type="text" class="editor-input" id="editKD" value="4.2">
+                    <div class="info-label">游戏时长</div>
+                    <input type="text" class="editor-input" id="editPlayTime" value="1500+小时">
+                </div>
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">个人标签 (用逗号分隔)</label>
+                <input type="text" class="editor-input" id="editTags" value="幽默风趣, 游戏达人, 技术宅, 团队核心">
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">经典语录</label>
+                <textarea class="editor-textarea" id="editQuote">"光电是我的专业，游戏是我的热爱，生活要有光也要有乐趣！"</textarea>
+            </div>
+            
+            <div class="editor-section">
+                <label class="editor-label">卡片主题颜色</label>
+                <div class="color-picker">
+                    <div class="color-option theme-1 active" data-theme="theme-1"></div>
+                    <div class="color-option theme-2" data-theme="theme-2"></div>
+                    <div class="color-option theme-3" data-theme="theme-3"></div>
+                    <div class="color-option theme-4" data-theme="theme-4"></div>
+                    <div class="color-option theme-5" data-theme="theme-5"></div>
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" id="updateBtn">
+                    <i class="fas fa-sync-alt"></i> 更新预览
+                </button>
+                <button class="btn btn-secondary" id="saveBtn">
+                    <i class="fas fa-save"></i> 保存设置
+                </button>
+            </div>
+            
+            <div class="preview-controls">
+                <button class="preview-btn" id="previewWechatBtn">
+                    <i class="fab fa-weixin"></i> 预览微信分享
+                </button>
+                <button class="preview-btn" id="previewFullscreenBtn">
+                    <i class="fas fa-expand"></i> 全屏预览
+                </button>
+            </div>
         </div>
     </div>
     
-    <!-- 编辑模态框 -->
-    <div class="modal" id="editModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">编辑内容</h2>
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-            </div>
-            <div id="modal-form">
-                <!-- 表单内容将通过JS动态生成 -->
-            </div>
-        </div>
-    </div>
+    <button class="share-btn" id="shareBtn">
+        <i class="fas fa-share-alt"></i> 生成微信分享
+    </button>
+    
+    <div class="notification" id="notification">设置已保存！</div>
     
     <script>
-        // 微信分享配置
-        wx.config({
-            debug: false,
-            appId: '', // 需替换为实际AppID
-            timestamp: new Date().getTime(),
-            nonceStr: 'nonceStr',
-            signature: '',
-            jsApiList: ['updateAppMessageShareData', 'updateTimelineShareData']
+        // DOM元素
+        const previewName = document.getElementById('previewName');
+        const previewTagline = document.getElementById('previewTagline');
+        const previewStatus = document.getElementById('previewStatus');
+        const previewMajor = document.getElementById('previewMajor');
+        const previewSchool = document.getElementById('previewSchool');
+        const previewGameId = document.getElementById('previewGameId');
+        const previewKills = document.getElementById('previewKills');
+        const previewWinRate = document.getElementById('previewWinRate');
+        const previewKD = document.getElementById('previewKD');
+        const previewPlayTime = document.getElementById('previewPlayTime');
+        const previewTags = document.getElementById('previewTags');
+        const previewQuote = document.getElementById('previewQuote');
+        const cardHeader = document.getElementById('cardHeader');
+        
+        // 编辑元素
+        const editName = document.getElementById('editName');
+        const editTagline = document.getElementById('editTagline');
+        const editStatus = document.getElementById('editStatus');
+        const editMajor = document.getElementById('editMajor');
+        const editSchool = document.getElementById('editSchool');
+        const editGameId = document.getElementById('editGameId');
+        const editKills = document.getElementById('editKills');
+        const editWinRate = document.getElementById('editWinRate');
+        const editKD = document.getElementById('editKD');
+        const editPlayTime = document.getElementById('editPlayTime');
+        const editTags = document.getElementById('editTags');
+        const editQuote = document.getElementById('editQuote');
+        
+        // 按钮
+        const updateBtn = document.getElementById('updateBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const previewWechatBtn = document.getElementById('previewWechatBtn');
+        const previewFullscreenBtn = document.getElementById('previewFullscreenBtn');
+        
+        // 颜色选择器
+        const colorOptions = document.querySelectorAll('.color-option');
+        const notification = document.getElementById('notification');
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载保存的设置
+            loadSettings();
+            
+            // 添加事件监听器
+            updateBtn.addEventListener('click', updatePreview);
+            saveBtn.addEventListener('click', saveSettings);
+            shareBtn.addEventListener('click', setupWechatShare);
+            previewWechatBtn.addEventListener('click', previewWechatShare);
+            previewFullscreenBtn.addEventListener('click', previewFullscreen);
+            
+            // 颜色选择器事件
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除所有active类
+                    colorOptions.forEach(opt => opt.classList.remove('active'));
+                    // 添加active到当前选项
+                    this.classList.add('active');
+                    // 更新卡片主题
+                    updateCardTheme(this.dataset.theme);
+                });
+            });
         });
         
-        wx.ready(function() {
-            // 自定义分享内容
-            wx.updateAppMessageShareData({
-                title: '高宇翔 - 和平精英地铁逃生专家',
-                desc: '南邮通达光电专业 · 团队开心果 · 战术指挥官',
-                link: window.location.href,
-                imgUrl: 'https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg',
-                success: function() {}
+        // 更新预览
+        function updatePreview() {
+            previewName.textContent = editName.value;
+            previewTagline.textContent = editTagline.value;
+            previewStatus.textContent = editStatus.value;
+            previewMajor.textContent = editMajor.value;
+            previewSchool.textContent = editSchool.value;
+            previewGameId.textContent = editGameId.value;
+            previewKills.textContent = editKills.value;
+            previewWinRate.textContent = editWinRate.value;
+            previewKD.textContent = editKD.value;
+            previewPlayTime.textContent = editPlayTime.value;
+            
+            // 更新标签
+            const tagsArray = editTags.value.split(',').map(tag => tag.trim()).filter(tag => tag);
+            previewTags.innerHTML = '';
+            tagsArray.forEach(tag => {
+                const skillElement = document.createElement('span');
+                skillElement.className = 'skill';
+                skillElement.textContent = tag;
+                previewTags.appendChild(skillElement);
             });
             
-            wx.updateTimelineShareData({
-                title: '高宇翔 - 和平精英地铁逃生专家',
-                link: window.location.href,
-                imgUrl: 'https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg',
-                success: function() {}
+            // 更新语录
+            previewQuote.textContent = editQuote.value;
+            
+            showNotification('预览已更新！');
+        }
+        
+        // 更新卡片主题
+        function updateCardTheme(themeClass) {
+            // 移除所有主题类
+            const classes = cardHeader.className.split(' ');
+            classes.forEach(cls => {
+                if (cls.startsWith('theme-')) {
+                    cardHeader.classList.remove(cls);
+                }
             });
-        });
-        
-        // 模态框功能
-        let currentEditSection = '';
-        
-        function openModal(section) {
-            currentEditSection = section;
-            const modal = document.getElementById('editModal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalForm = document.getElementById('modal-form');
             
-            modal.style.display = 'flex';
-            
-            switch(section) {
-                case 'bio':
-                    modalTitle.textContent = '编辑个人简介';
-                    modalForm.innerHTML = `
-                        <div class="form-group">
-                            <label for="edit-name">姓名</label>
-                            <input type="text" id="edit-name" value="${document.getElementById('name').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-school">学校与专业</label>
-                            <input type="text" id="edit-school" value="${document.getElementById('school').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-title">称号</label>
-                            <input type="text" id="edit-title" value="${document.getElementById('title').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-bio">个人简介</label>
-                            <textarea id="edit-bio">${document.getElementById('bio-content').textContent}</textarea>
-                        </div>
-                        <div class="btn-container">
-                            <button class="btn" onclick="saveChanges()">保存</button>
-                            <button class="btn btn-secondary" onclick="closeModal()">取消</button>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'stats':
-                    modalTitle.textContent = '编辑游戏数据';
-                    modalForm.innerHTML = `
-                        <div class="form-group">
-                            <label for="edit-kd">KD值</label>
-                            <input type="text" id="edit-kd" value="${document.getElementById('kd-value').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-level">段位</label>
-                            <select id="edit-level">
-                                <option ${document.getElementById('level').textContent === '青铜' ? 'selected' : ''}>青铜</option>
-                                <option ${document.getElementById('level').textContent === '白银' ? 'selected' : ''}>白银</option>
-                                <option ${document.getElementById('level').textContent === '黄金' ? 'selected' : ''}>黄金</option>
-                                <option ${document.getElementById('level').textContent === '铂金' ? 'selected' : ''}>铂金</option>
-                                <option ${document.getElementById('level').textContent === '钻石' ? 'selected' : ''}>钻石</option>
-                                <option ${document.getElementById('level').textContent === '皇冠' ? 'selected' : ''}>皇冠</option>
-                                <option ${document.getElementById('level').textContent === '王牌' ? 'selected' : ''}>王牌</option>
-                                <option ${document.getElementById('level').textContent === '战神' ? 'selected' : ''}>战神</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-matches">游戏场次</label>
-                            <input type="text" id="edit-matches" value="${document.getElementById('matches').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-win-rate">胜率</label>
-                            <input type="text" id="edit-win-rate" value="${document.getElementById('win-rate').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-headshot">爆头率</label>
-                            <input type="text" id="edit-headshot" value="${document.getElementById('headshot').textContent}">
-                        </div>
-                        <div class="form-group">
-                            <label for="edit-damage">场均伤害</label>
-                            <input type="text" id="edit-damage" value="${document.getElementById('damage').textContent}">
-                        </div>
-                        <div class="btn-container">
-                            <button class="btn" onclick="saveChanges()">保存</button>
-                            <button class="btn btn-secondary" onclick="closeModal()">取消</button>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'tags':
-                    modalTitle.textContent = '编辑个人标签';
-                    const tags = Array.from(document.querySelectorAll('#tag-cloud .tag'))
-                        .map(tag => tag.textContent)
-                        .join(',');
-                        
-                    modalForm.innerHTML = `
-                        <div class="form-group">
-                            <label for="edit-tags">个人标签 (用逗号分隔)</label>
-                            <textarea id="edit-tags">${tags}</textarea>
-                        </div>
-                        <div class="btn-container">
-                            <button class="btn" onclick="saveChanges()">保存</button>
-                            <button class="btn btn-secondary" onclick="closeModal()">取消</button>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'quote':
-                    modalTitle.textContent = '编辑经典语录';
-                    modalForm.innerHTML = `
-                        <div class="form-group">
-                            <label for="edit-quote">经典语录</label>
-                            <textarea id="edit-quote">${document.getElementById('quote').textContent}</textarea>
-                        </div>
-                        <div class="btn-container">
-                            <button class="btn" onclick="saveChanges()">保存</button>
-                            <button class="btn btn-secondary" onclick="closeModal()">取消</button>
-                        </div>
-                    `;
-                    break;
-            }
+            // 添加新主题类
+            cardHeader.classList.add(themeClass);
         }
         
-        function closeModal() {
-            document.getElementById('editModal').style.display = 'none';
+        // 保存设置
+        function saveSettings() {
+            const settings = {
+                name: editName.value,
+                tagline: editTagline.value,
+                status: editStatus.value,
+                major: editMajor.value,
+                school: editSchool.value,
+                gameId: editGameId.value,
+                kills: editKills.value,
+                winRate: editWinRate.value,
+                kd: editKD.value,
+                playTime: editPlayTime.value,
+                tags: editTags.value,
+                quote: editQuote.value,
+                theme: document.querySelector('.color-option.active').dataset.theme
+            };
+            
+            localStorage.setItem('profileSettings', JSON.stringify(settings));
+            showNotification('设置已保存！');
         }
         
-        function saveChanges() {
-            switch(currentEditSection) {
-                case 'bio':
-                    document.getElementById('name').textContent = document.getElementById('edit-name').value;
-                    document.getElementById('school').textContent = document.getElementById('edit-school').value;
-                    document.getElementById('title').textContent = document.getElementById('edit-title').value;
-                    document.getElementById('bio-content').textContent = document.getElementById('edit-bio').value;
-                    break;
-                    
-                case 'stats':
-                    document.getElementById('kd-value').textContent = document.getElementById('edit-kd').value;
-                    document.getElementById('level').textContent = document.getElementById('edit-level').value;
-                    document.getElementById('matches').textContent = document.getElementById('edit-matches').value;
-                    document.getElementById('win-rate').textContent = document.getElementById('edit-win-rate').value;
-                    document.getElementById('headshot').textContent = document.getElementById('edit-headshot').value;
-                    document.getElementById('damage').textContent = document.getElementById('edit-damage').value;
-                    break;
-                    
-                case 'tags':
-                    const tagsContainer = document.getElementById('tag-cloud');
-                    tagsContainer.innerHTML = '';
-                    
-                    const tags = document.getElementById('edit-tags').value.split(',');
-                    tags.forEach(tag => {
-                        if (tag.trim()) {
-                            const tagElement = document.createElement('span');
-                            tagElement.className = 'tag';
-                            tagElement.textContent = tag.trim();
-                            tagsContainer.appendChild(tagElement);
-                        }
-                    });
-                    break;
-                    
-                case 'quote':
-                    document.getElementById('quote').textContent = document.getElementById('edit-quote').value;
-                    break;
-            }
-            
-            // 更新最后修改日期
-            const now = new Date();
-            document.getElementById('update-date').textContent = 
-                `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日`;
+        // 加载设置
+        function loadSettings() {
+            const savedSettings = localStorage.getItem('profileSettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
                 
-            closeModal();
-        }
-        
-        // 点击模态框外部关闭
-        window.onclick = function(event) {
-            const modal = document.getElementById('editModal');
-            if (event.target === modal) {
-                closeModal();
+                // 设置编辑字段
+                editName.value = settings.name;
+                editTagline.value = settings.tagline;
+                editStatus.value = settings.status;
+                editMajor.value = settings.major;
+                editSchool.value = settings.school;
+                editGameId.value = settings.gameId;
+                editKills.value = settings.kills;
+                editWinRate.value = settings.winRate;
+                editKD.value = settings.kd;
+                editPlayTime.value = settings.playTime;
+                editTags.value = settings.tags;
+                editQuote.value = settings.quote;
+                
+                // 设置主题
+                const activeTheme = settings.theme || 'theme-1';
+                document.querySelectorAll('.color-option').forEach(option => {
+                    if (option.dataset.theme === activeTheme) {
+                        option.classList.add('active');
+                        updateCardTheme(activeTheme);
+                    } else {
+                        option.classList.remove('active');
+                    }
+                });
+                
+                // 更新预览
+                updatePreview();
             }
         }
         
-        // 初始化最后更新日期
-        document.getElementById('update-date').textContent = 
-            new Date().toLocaleDateString('zh-CN', {year: 'numeric', month: 'long', day: 'numeric'});
+        // 设置微信分享
+        function setupWechatShare() {
+            // 更新微信分享meta标签
+            document.querySelector('meta[property="og:title"]').content = `${editName.value} - ${editTagline.value}`;
+            document.querySelector('meta[property="og:description"]').content = `${editSchool.value} | ${editMajor.value} | ${editGameId.value}`;
+            
+            showNotification('微信分享设置已更新！');
+            
+            // 在实际应用中，这里会调用微信JS-SDK的配置
+            alert('微信分享功能已配置完成！在实际环境中，用户可以通过微信分享此页面。');
+        }
+        
+        // 预览微信分享
+        function previewWechatShare() {
+            // 创建微信分享预览
+            const preview = document.createElement('div');
+            preview.style.position = 'fixed';
+            preview.style.top = '0';
+            preview.style.left = '0';
+            preview.style.width = '100%';
+            preview.style.height = '100%';
+            preview.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            preview.style.zIndex = '1000';
+            preview.style.display = 'flex';
+            preview.style.alignItems = 'center';
+            preview.style.justifyContent = 'center';
+            preview.style.backdropFilter = 'blur(10px)';
+            
+            // 微信分享卡片
+            const wechatCard = document.createElement('div');
+            wechatCard.style.width = '300px';
+            wechatCard.style.backgroundColor = 'white';
+            wechatCard.style.borderRadius = '10px';
+            wechatCard.style.padding = '20px';
+            wechatCard.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            wechatCard.style.textAlign = 'center';
+            
+            // 卡片标题
+            const title = document.createElement('h3');
+            title.textContent = '微信分享预览';
+            title.style.marginBottom = '20px';
+            title.style.color = '#333';
+            
+            // 分享图片
+            const shareImage = document.createElement('div');
+            shareImage.style.width = '100%';
+            shareImage.style.height = '160px';
+            shareImage.style.backgroundImage = 'url(https://Ray-Rick.github.io/375dff17427947dddd2fd2d2ae801feb.jpg)';
+            shareImage.style.backgroundSize = 'cover';
+            shareImage.style.backgroundPosition = 'center';
+            shareImage.style.borderRadius = '8px';
+            shareImage.style.marginBottom = '15px';
+            
+            // 分享标题
+            const shareTitle = document.createElement('div');
+            shareTitle.textContent = `${editName.value} - ${editTagline.value}`;
+            shareTitle.style.fontWeight = 'bold';
+            shareTitle.style.fontSize = '18px';
+            shareTitle.style.marginBottom = '10px';
+            shareTitle.style.color = '#333';
+            
+            // 分享描述
+            const shareDesc = document.createElement('div');
+            shareDesc.textContent = `${editSchool.value} | ${editMajor.value} | ${editGameId.value}`;
+            shareDesc.style.fontSize = '14px';
+            shareDesc.style.color = '#666';
+            shareDesc.style.marginBottom = '20px';
+            
+            // 关闭按钮
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '关闭预览';
+            closeBtn.style.padding = '10px 20px';
+            closeBtn.style.background = '#07C160';
+            closeBtn.style.color = 'white';
+            closeBtn.style.border = 'none';
+            closeBtn.style.borderRadius = '5px';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.fontWeight = 'bold';
+            closeBtn.addEventListener('click', function() {
+                document.body.removeChild(preview);
+            });
+            
+            // 组装卡片
+            wechatCard.appendChild(title);
+            wechatCard.appendChild(shareImage);
+            wechatCard.appendChild(shareTitle);
+            wechatCard.appendChild(shareDesc);
+            wechatCard.appendChild(closeBtn);
+            
+            preview.appendChild(wechatCard);
+            document.body.appendChild(preview);
+        }
+        
+        // 全屏预览
+        function previewFullscreen() {
+            const previewCard = document.getElementById('previewCard');
+            
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                previewCard.requestFullscreen().catch(err => {
+                    console.error(`全屏请求错误: ${err.message}`);
+                });
+            }
+        }
+        
+        // 显示通知
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
     </script>
 </body>
 </html>
