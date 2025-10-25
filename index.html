@@ -191,6 +191,68 @@
         </div>
     </div>
 
+    <!-- 微信JS-SDK -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <script>
+        // 微信分享配置
+        async function initWeChatShare() {
+            try {
+                // 获取当前页面URL（去除hash部分）
+                const currentUrl = window.location.href.split('#')[0];
+                
+                // 调用API获取签名
+                const response = await fetch(`https://your-function-url/wechat-signature?url=${encodeURIComponent(currentUrl)}`);
+                const signData = await response.json();
+                
+                if (signData.error) {
+                    console.error('Failed to get WeChat signature:', signData.error);
+                    return;
+                }
+                
+                // 配置微信JS-SDK
+                wx.config({
+                    debug: false,
+                    appId: signData.appId,
+                    timestamp: signData.timestamp,
+                    nonceStr: signData.nonceStr,
+                    signature: signData.signature,
+                    jsApiList: [
+                        'updateAppMessageShareData',
+                        'updateTimelineShareData',
+                        'onMenuShareAppMessage',
+                        'onMenuShareTimeline'
+                    ]
+                });
+                
+                wx.ready(() => {
+                    // 自定义"分享给朋友"及"分享到QQ"按钮的分享内容
+                    wx.updateAppMessageShareData({
+                        title: '前饿的舒服舒服舒服色粉端开发工程师',
+                        desc: '查看我的专业简历',
+                        link: currentUrl,
+                        imgUrl: 'https://via.placeholder.com/300',
+                    });
+                    
+                    // 自定义"分享到朋友圈"及"分享到QQ空间"按钮的分享内容
+                    wx.updateTimelineShareData({
+                        title: '1300747 沙发上睡睡睡睡睡色粉色粉色488的专业简历',
+                        link: currentUrl,
+                        imgUrl: 'https://via.placeholder.com/300',
+                    });
+                });
+                
+                wx.error((res) => {
+                    console.error('WeChat JS-SDK Error:', res);
+                });
+                
+            } catch (error) {
+                console.error('Failed to initialize WeChat share:', error);
+            }
+        }
+
+        // 页面加载完成后初始化微信分享
+        document.addEventListener('DOMContentLoaded', initWeChatShare);
+    </script>
 </body>
 </html>
 将这个微信分享卡片的部分介绍一下，然后代码介绍一下
